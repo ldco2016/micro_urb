@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="resources/css/queries.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>MicroUrb</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/favicons/favicon-16x16.png">
+    <link rel="manifest" href="resources/favicons/manifest.json">
+    <link rel="mask-icon" href="resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="resources/favicons/favicon.ico">
+    <meta name="msapplication-config" content="resources/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
   </head>
   <body>
     <header>
@@ -272,13 +281,24 @@
         </div>
       </div>
     </section>
-    <section class="section-form">
+    <section class="section-form" id="form">
       <div class="row">
         <h2>We're happy to hear from you</h2>
       </div>
       <div class="row">
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" action="mailer.php" method="post">
           <div class="row">
+            <?php
+              if ($_GET['success'] == 1) {
+                echo "<div class=\"form-messages success\">Thank you! Your message has been sent.</div>";
+              }
+              if ($_GET['error'] == 1) {
+                echo "<div class=\"form-messages error\">Oops! Something went wrong. Please try again!</div>";
+              }
+            ?>
+          </div>
+          <div class="row">
+
             <div class="col span-1-of-3">
               <label for="name">Name</label>
             </div>
